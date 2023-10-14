@@ -31,7 +31,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.114.0
+      HUGO_VERSION: 0.119.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -43,11 +43,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: clone theme
+        run: "git clone https://github.com/DLYSY/hugo-PaperMod-with-KaTeX.git /themes/hugo-PaperMod-with-KaTeX"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -56,20 +55,16 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+            --cleanDestinationDir \
+            -F
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          path: ./public
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          # 这里是 rsync 的参数 switches: -avzh --delete --exclude="" --include="" --filter=""
+          switches: -avzh
+          path: public/
+          remote_path: /srv/www/blog/
+          remote_host: blog.dlysy.top
+          remote_port: 22
+          remote_user: ivor
+          remote_key: ${{secrets.SSH}}
