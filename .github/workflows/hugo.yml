@@ -46,7 +46,7 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: clone theme
-        run: "git clone https://github.com/DLYSY/hugo-PaperMod-with-KaTeX.git themes/hugo-PaperMod-with-KaTeX"
+        run: "git clone https://github.com/adityatelange/hugo-PaperMod.git themes/hugo-PaperMod"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules

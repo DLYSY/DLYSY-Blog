@@ -1,7 +1,7 @@
 baseURL: https://blog.dlysy.top:90/
 languageCode: zh-cn
 title: DLYSY Blog
-theme: hugo-PaperMod-with-KaTeX
+theme: hugo-PaperMod
 
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
@@ -11,8 +11,6 @@ hasCJKLanguage: true # 自动检测是否包含 中文日文韩文 如果文章�
 buildDrafts: false
 buildFuture: false
 buildExpired: false
-
-googleAnalytics: UA-123-45 # 谷歌统计
 
 paginate: 15    # 每页显示的文章数
 summaryLength: 140 # 文章概览的自字数，默认70
@@ -109,11 +107,6 @@ params:
       url: "https://space.bilibili.com/85348442"
     - name: RSS
       url: "index.xml"
-
-
-  analytics:  #谷歌分析
-  google:
-    SiteVerificationTag: ""
 
   cover:
     hidden: true # hide everywhere but not in structured data
