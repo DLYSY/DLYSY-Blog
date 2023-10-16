@@ -3,6 +3,9 @@ languageCode: zh-cn
 title: DLYSY Blog
 theme: hugo-PaperMod
 
+time_Zone: Asia/Shanghai
+copyright: 若没有特别说明，本站所有文章均采用 CC-BY-NC-ND 4.0协议<br/>©DLYSY 2023<br/>
+
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
 enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
