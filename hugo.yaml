@@ -4,7 +4,7 @@ title: DLYSY Blog
 theme: hugo-PaperMod
 
 time_Zone: Asia/Shanghai
-copyright: 若没有特别说明，本站所有文章均采用 CC-BY-NC-ND 4.0协议<br/>©DLYSY 2023<br/>
+copyright: <img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png">若没有特别说明，本站所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC-BY-NC-ND 4.0协议</a><br/>©DLYSY 2023<br/>
 
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
@@ -33,25 +33,23 @@ menu:
     - identifier: archives
       name: 📜 文章
       url: archives
-      weight: 3
-      weight: 20
+      weight: 2
     - identifier: posts
       name: 🎏 分区
       url: post
       weight: 3
-      weight: 30
     - identifier: categories
       name: 📁 分类
       url: categories
-      weight: 40
+      weight: 4
     - identifier: tags
       name: 🚩 标签
       url: tags
-      weight: 40
+      weight: 5
     - identifier: about
       name: 💡 关于
       url: about
-      weight: 50
+      weight: 6
 
 
 
@@ -135,11 +133,12 @@ markup:
     goldmark:
         renderer:
             unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+    #语法高亮
     highlight:
         # anchorLineNos: true
         codeFences: true
         guessSyntax: true
-        lineNos: true
+        lineNos: true #显示行号
         noClasses: false
         style: darcula
 
