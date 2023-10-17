@@ -11,14 +11,6 @@ description: "本文以 JupyterLab 为例，就此说明如何在 IIS 中反向�
 categories: 
 - Windows
 ---
-**！！！注意！！！**
-
-**1. 本文创作时 Windows Server 版本为 2022，IIS 版本为 IIS 10，未来软件版本发生变化时，本文可能不再适用。**
-
-**2. 本文不包含搭建和配置 Jupyter 相关内容。**
-
-**3. 由于各人环境不同，我不保证我的方法在你的环境上一定完全不会出问题。遇到问题请善用搜索引擎，我不一定会遇到和你一样的问题，也不一定知道解决方法。**
-
 # 前言
 全网关于 JupyterLab + Nginx 的文章不少，不过我个人的服务器是 Windows Server。虽然 Nginx 在 Windows 上也能用，但在 Windows 上 IIS 毕竟与系统集成，还有好用的 GUI（前提是没有用 Server Core），我就想能不能用 IIS 做反向代理。
 
