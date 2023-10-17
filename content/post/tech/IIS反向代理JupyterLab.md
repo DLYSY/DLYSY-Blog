@@ -7,26 +7,28 @@ tags:
 - Windows
 - IIS
 - Jupyter
+description: "本文以 JupyterLab 为例，就此说明如何在 IIS 中反向代理 WebSocket。"
 categories: 
 - Windows
 ---
+**！！！注意！！！**
+
+**1. 本文创作时 Windows Server 版本为 2022，IIS 版本为 IIS 10，未来软件版本发生变化时，本文可能不再适用。**
+
+**2. 本文不包含搭建和配置 Jupyter 相关内容。**
+
+**3. 由于各人环境不同，我不保证我的方法在你的环境上一定完全不会出问题。遇到问题请善用搜索引擎，我不一定会遇到和你一样的问题，也不一定知道解决方法。**
 
 # 前言
-全网关于 JupyterLab + Nginx 的文章不少，不过我个人的服务器是Windows Server。虽然 Nginx 在 Windows 上也能用，但在 Windows 上 IIS 毕竟与系统集成，还有好用的 GUI（前提是没有用 Server Core），我就想能不能用 IIS 做反向代理。
+全网关于 JupyterLab + Nginx 的文章不少，不过我个人的服务器是 Windows Server。虽然 Nginx 在 Windows 上也能用，但在 Windows 上 IIS 毕竟与系统集成，还有好用的 GUI（前提是没有用 Server Core），我就想能不能用 IIS 做反向代理。
 
 本文简单的描述了我搭建 IIS 反向代理的过程，不过由于我在个人服务器上已经配置好了，所以写本文时全程在虚拟机上模拟。
-
-**！！！注意！！！本文不教你如何搭建和配置 Jupyter！**
-
-*注：由于各人环境不同，我不保证我的方法在你的环境上一定完全不会出问题。遇到问题请善用搜索引擎，我不一定会遇到和你一样的问题，也不一定知道解决方法。*
 
 # 前置工作
 
 ## 安装并配置好 Jupyter
 
-我默认你自己会配置 Jupyter，Jupyter 安装配置教程我以后有机会再写。
-
-Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行。
+安装和配置 Jupyter 不属于本文的范畴，这里不再做相关说明。
 
 需要在 Jupyter 配置文件中做如下设置：
 
@@ -43,9 +45,9 @@ Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行
 
 演示使用 Windows Server 2022 Datacenter，Standard 版本只是 Hyper-V 做了一些限制，和 Datacenter 没什么区别。
 
-请使用 Windows Server 2016 及以上版本，因为目前只有 IIS 10 支持 WebSocket 协议，Windows Server 2016以后的版本才支持 IIS 10。
+请使用 Windows Server 2016 及以上版本，因为目前只有 IIS 10 支持 WebSocket 协议，而 Windows Server 2016 及以后的版本才支持 IIS 10。
 
-*注：虽然 IIS 8.5 及以前版本也可以通过自定义 URL 重写规则的方式实现 WebSocket 反向代理，但是我既没有测试过，也不会去测试。Windows Server 2012 是一个已经发布了十来年的操作系统，专门去研究它并出教程是没有意义的。*
+*注：虽然 IIS 8.5 及以前版本也可以通过自定义 URL 重写规则的方式实现 WebSocket 反向代理，但是我既没有测试过，也不会去测试。Windows Server 2012 是一个已经发布了十多年的操作系统，专门去研究它是没有意义的。*
 
 虽然我不推荐，但是 Windows 10/11 理论上也可以用。
 
@@ -57,7 +59,7 @@ Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行
 
 打开防火墙相关端口（如 Jupyter 默认8888）或关闭防火墙（不建议长时间关闭防火墙，这样做很危险）。
 
-在本文中 IIS 的 IP：192.168.56.6，Jupyter 的 IP：192.168.56.5
+在本文中，IIS 服务器的 IP：192.168.56.6，Jupyter 服务器的 IP：192.168.56.5。
 
 # 准备工作
 
@@ -119,7 +121,7 @@ Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行
 
 2. 将下面的 http 改成 https，最后在右边点击“应用”
 
-*注：如果在 Jupyter 上配置了 SSL，必须确保 IIS 主机信任 Jupyter 上 SSL 的 CA（ SSL 主机名不对没关系，关键是 CA 要信任），否则将会发生502（好像是502.3）的服务器错误。*
+*注：如果在 Jupyter 上配置了 SSL，必须确保 IIS 主机信任 Jupyter 上 SSL 的 CA（SSL 主机名不对没关系，关键是 CA 要信任），否则将会发生502（好像是502.3）的服务器错误。*
 
 ![4-8](https://dlysy.github.io/PictureBads/DLYSYBlog/tech/IIS反向代理JupyterLab/4-8.PNG)
 
@@ -133,7 +135,7 @@ Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行
 
 ## 关于 IIS 使用 SSL
 
-个人使用 Certify The Web 申请 Let's Encrypt SSL 证书，以后有时间慢慢填坑吧。
+个人使用 Certify The Web 申请 Let's Encrypt SSL 证书。
 
 ## 关于将Jupyter作为守护进程运行
 
@@ -141,4 +143,4 @@ Jupyter 服务器主机操作系统不限，只要能正常启动和运行就行
 
 Linux 可以包装为 systemd 服务，Windows 可以调用 win32api 进行封装。
 
-感觉又是一个天坑......
+不过这些都不是本文应该讨论的范畴，在此不再作额外说明。

@@ -7,10 +7,19 @@ categories:
 tags: 
 - Python
 - Windows
-# description: "" #描述
+description: "本文说明了如何使用 PyWin32 编写基于 Python 的 Windows 服务。" #描述
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
 draft: false # 是否为草稿
 ---
+**！！！注意！！！**
+
+**1. 本文创作于 Python 3.11 时期，并且在 Python 3.12.0 版本上测试正常，但随着 Python 的更新，本文所说明的方法可能会在未来失效。**
+
+**2. 本文不涉及 Python 基础教程，文中代码和
+[示例项目](https://github.com/DLYSY/CloudFlareDDNS-WindowsService-Python)
+都有注释。**
+
+**3. 由于各人环境不同，我不保证我的方法在你的环境上一定完全不会出问题。遇到问题请善用搜索引擎，我不一定会遇到和你一样的问题，也不一定知道解决方法。**
 
 # 前言
 
@@ -75,7 +84,7 @@ from threading import Event
 from sys import argv,exit
 ```
 
-*对于`pywin32`相关的包，尽量直接使用`import`而不是`from ... import ...`的形式，前这可能出现无法启动的问题。*
+*对于`pywin32`相关的包，尽量直接使用`import`而不是`from ... import ...`的形式，否则可能出现无法启动服务的问题。*
 
 ## 通过重写类来实现服务
 
