@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Install pip
         run: |
-          sudo apt-get install update
+          sudo apt-get update
           sudo apt-get install python3-pip
 
       - name: Install requests with pip
