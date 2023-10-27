@@ -16,7 +16,6 @@ buildFuture: false
 buildExpired: false
 
 paginate: 15    # 每页显示的文章数
-summaryLength: 140 # 文章概览的自字数，默认70
 
 minify:
   disableXML: true
@@ -51,14 +50,12 @@ menu:
       url: about
       weight: 6
 
-
-
 outputs:
   home:
     - HTML
     - RSS
     - JSON
-#
+
 params:
   homeInfoParams:
     Title: "欢迎来到DLYSY的博客"
@@ -97,7 +94,7 @@ params:
   ShowLastMod: true #显示文章更新时间
   ShowToc: true # 显示目录
   TocOpen: true # 自动展开目录
-  comments: true
+  author: DLYSY
 
   socialIcons:
     - name: github

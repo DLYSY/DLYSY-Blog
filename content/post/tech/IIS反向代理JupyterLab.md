@@ -1,17 +1,18 @@
 ---
 title: "IIS 反向代理 JupyterLab"
-date: 2023-05-01
-author: DLYSY 
+date: 2023-05-01 
 draft: false
 tags: 
 - Windows
 - IIS
 - Jupyter
-description: "本文以 JupyterLab 为例，就此说明如何在 IIS 中反向代理 WebSocket。"
+description: &description "以 JupyterLab 为例，就此说明如何在 IIS 中反向代理 WebSocket。"
+summary: *description
 categories: 
 - Windows
 ---
 # 前言
+
 全网关于 JupyterLab + Nginx 的文章不少，不过我个人的服务器是 Windows Server。虽然 Nginx 在 Windows 上也能用，但在 Windows 上 IIS 毕竟与系统集成，还有好用的 GUI（前提是没有用 Server Core），我就想能不能用 IIS 做反向代理。
 
 本文简单的描述了我搭建 IIS 反向代理的过程，不过由于我在个人服务器上已经配置好了，所以写本文时全程在虚拟机上模拟。

@@ -1,13 +1,14 @@
 ---
-title: "防城港游记" #标题
-date: 2023-08-12T02:17:58+08:00 #创建时间
+title: "{{ replace .Name "-" " " | title }}" #标题
+date: {{ .Date }} #创建时间
 author: DLYSY #作者
 categories: 
-- 游记
+- 分类1
 tags: 
-- 旅游
+- 标签1
 - 标签2
-# description: "" #描述
+description: &description "" #描述
+summary: *description
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
 draft: true # 是否为草稿
 ---

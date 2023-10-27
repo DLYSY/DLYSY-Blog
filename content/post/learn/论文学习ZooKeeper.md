@@ -1,13 +1,15 @@
 ---
 title: "论文学习——ZooKeeper"
 date: 2023-06-01
-author: 
+author:
   - "keys961"
   - "DLYSY"
 draft: false
 tags:
   - 分布式计算
   - Paper
+description: &description "对 ZooKeeper 论文的精读与理解"
+summary: *description
 categories: 
   - 学业 
 ---

@@ -1,13 +1,13 @@
 ---
 title: "用 Python 编写 Windows 服务" #标题
 date: 2023-08-01T20:57:22+08:00 #创建时间
-author: DLYSY #作者
 categories: 
 - Windows
 tags: 
 - Python
 - Windows
-description: "本文说明了如何使用 PyWin32 编写基于 Python 的 Windows 服务。" #描述
+description: &description "本文说明了如何使用 PyWin32 编写基于 Python 的 Windows 服务。" #描述
+summary: *description
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
 draft: false # 是否为草稿
 ---
