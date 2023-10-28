@@ -31,17 +31,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install pip
-        run: |
-          sudo apt-get update
-          sudo apt-get install python3-pip
-
-      - name: Install requests with pip
-        run: sudo pip install requests
-
       - name: download latest hugo
         run: |
-          sudo chmod +x download_hugo.py
+          ls
           python3 download_hugo.py
 
       - name: Install Hugo CLI
