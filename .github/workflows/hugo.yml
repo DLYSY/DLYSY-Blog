@@ -40,7 +40,9 @@ jobs:
         run: sudo pip install requests
 
       - name: download latest hugo
-        run: python3 download_hugo.py
+        run: |
+          sudo chmod +x download_hugo.py
+          python3 download_hugo.py
 
       - name: Install Hugo CLI
         run: sudo dpkg -i ${{ runner.temp }}/hugo.deb
