@@ -35,11 +35,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-          
+
       - name: download latest hugo
-        run: |
-          sudo find / -name downliad_hugo.py
-          python3 download_hugo.py
+        run: python3 download_hugo.py
 
       - name: Install Hugo CLI
         run: sudo dpkg -i ${{ runner.temp }}/hugo.deb
