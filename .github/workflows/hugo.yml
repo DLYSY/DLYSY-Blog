@@ -31,6 +31,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          
       - name: download latest hugo
         run: |
           sudo find / -name downliad_hugo.py
@@ -41,11 +46,6 @@ jobs:
 
       - name: Install Dart Sass
         run: sudo snap install dart-sass
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
