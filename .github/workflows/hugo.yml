@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: download latest hugo
         run: |
-          ls
+          sudo find / -name downliad_hugo.py
           python3 download_hugo.py
 
       - name: Install Hugo CLI
