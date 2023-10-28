@@ -6,4 +6,4 @@ for i in a["assets"]:
         package_url=i["browser_download_url"]
 
 # print("wget -O ${{ runner.temp }}/hugo.deb "+package_url)
-os.system("wget -O ${{ runner.temp }}/hugo.deb "+package_url)
+os.system("wget -O hugo.deb "+package_url)
