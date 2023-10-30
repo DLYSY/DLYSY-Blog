@@ -36,13 +36,10 @@ jobs:
         with:
           submodules: recursive
 
-      - name: download latest hugo
+      - name: download and install latest hugo
         run: |
           python3 download_hugo.py
           sudo dpkg -i hugo.deb
-
-      # - name: Install Hugo CLI
-        # run: sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Install Dart Sass
         run: sudo snap install dart-sass

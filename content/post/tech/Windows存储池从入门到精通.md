@@ -1,5 +1,5 @@
 ---
-title: "Windows存储池从入门到精通" #标题
+title: "通过调整 NTFS 块和存储池交错的大小改善 Windows 存储池奇偶校验的性能" #标题
 date: 2023-11-01T23:19:55+08:00 #创建时间
 author: DLYSY #作者
 categories: 

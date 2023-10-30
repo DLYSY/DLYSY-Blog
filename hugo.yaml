@@ -4,7 +4,10 @@ title: DLYSY Blog
 theme: hugo-PaperMod
 
 time_Zone: Asia/Shanghai
-copyright: <img src="https://licensebuttons.net/l/by-nd/4.0/88x31.png">若没有特别说明，本站所有文章均采用<a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh-hans">CC-BY-ND 4.0协议</a><br/>©DLYSY 2023<br/>
+copyright: |
+  <img src="https://licensebuttons.net/l/by-nd/4.0/88x31.png">
+  若没有特别说明，本站所有文章均采用<a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh-hans">CC-BY-ND 4.0协议</a><br/>
+  ©DLYSY 2023<br/>
 
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
@@ -77,7 +80,6 @@ params:
 
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   description: ""
-  # author: DLYSY
   defaultTheme: auto # defaultTheme: light or  dark
   disableThemeToggle: false
   DateFormat: "2006-01-02"

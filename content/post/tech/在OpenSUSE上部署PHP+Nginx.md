@@ -7,7 +7,7 @@ tags:
 - Linux
 - Nginx
 - PHP
-description: &description "以 OpenSUSE Tumbleweed 为例主要解决如何在使用 AppArmor 的 Linux 发行版上使用 PHP FPM 的问题。" #描述
+description: &description "以 OpenSUSE Leap 15.5 为例主要解决如何在使用 AppArmor 的 Linux 发行版上使用 PHP FPM 的问题。" #描述
 summary: *description
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
 draft: true # 是否为草稿
@@ -31,27 +31,28 @@ Linux 安装方法和过程本文也不作详细说明。
 ## Nginx & PHP FPM
 
 ```bash
-sudo zypper install nginx
-sudo zypper install php8
-sudo zypper install php8-fpm
+sudo zypper install nginx php8 php8-fpm
 ```
 
 ## PHP 应用 （以 phpMyAdmin 为例）
 
 我这里使用`phpMyAdmin`做示例，当然，你也可以用其他 PHP 应用，原理相同。
 
-可以直接使用`zypper`安装：
+- 可以直接使用`zypper`安装：
 
 ```bash
 sudo zypper install phpMyAdmin
 ```
 
-`zypper`会附带安装`Apache2`，但本文的内容是`Nginx`，所以自动安装的`Apache2`不用管它，不用`systemctl`启动就OK。
+*`zypper`有可能会附带安装`Apache2`，但本文的内容是`Nginx`，所以自动安装的`Apache2`不用管它，不用`systemctl`启动就OK。*
 
-或者参考
+- 或者参考
 [phpMyAdmin的文档](https://docs.phpmyadmin.net/zh_CN/latest/)
-进行手动下载安装，这里不在进行说明。
+进行手动下载安装，这里不再进行说明。
 
+```bash
+sudo systemctl enable --now nginx
+```
 # 
-# 关闭 AppArmor
-# 在 AppArmor中进行授权
+- 关闭 AppArmor（不推荐）
+- 在 AppArmor中进行授权
