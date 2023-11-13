@@ -21,7 +21,7 @@ jobs:
           lfs: false
           
       - name: clone theme
-        run: "git clone https://github.com/adityatelange/hugo-PaperMod.git themes/hugo-PaperMod"
+        run: "git clone https://github.com/CaiJimmy/hugo-theme-stack.git themes/hugo-theme-stack"
 
       - name: Build And Deploy
         id: builddeploy
