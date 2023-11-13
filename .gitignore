@@ -1,2 +1,5 @@
 themes/
 .hugo_build.lock
+resources/
+i18n\
+data\

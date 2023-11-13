@@ -1,15 +1,15 @@
-baseURL: https://blog.dlysy.top/
-languageCode: zh-cn
-title: DLYSY Blog
-theme: hugo-theme-stack
-
-time_Zone: Asia/Shanghai
-
+baseURL: https://blog.dlysy.top/ #网页链接
+languageCode: en #语言
+# DefaultContentLanguage: zh_cn
+title: DLYSY Blog #标题
+theme: hugo-theme-stack #主题
+time_Zone: Asia/Shanghai #时间戳
+copyright: DLYSY #版权
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
 enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
 hasCJKLanguage: true # 自动检测是否包含 中文日文韩文 如果文章中使用了很多中文引号的话可以开启
-
+env: production # to enable google analytics, opengraph, twitter-cards and schema.
 buildDrafts: false
 buildFuture: false
 buildExpired: false
@@ -21,7 +21,6 @@ minify:
 
 permalinks: #浏览器链接显示方式
   post: "/:title/" 
-
 
 menu:
   social:
@@ -64,9 +63,11 @@ menu:
       params:
         icon: archives
 
-    - name: 🎏 分区
+    - name: 文章分区
       url: /post
       weight: 3
+      params:
+        icon: windmill
 
     - name: 文章分类
       url: /categories
@@ -87,9 +88,29 @@ menu:
         icon: bulb
 
 Params:
+  mainSections:
+    - post
+  DateFormat:
+    published: "2006-01-02"
+
   Sidebar:
     compact: true
+    avatar:
+      enabled: true
+      src: "avatar.jpg"
+      locale: true
+
   Article:
     License:
-      Default: CC-By
+      Default: 本文采用 CC-BY-ND 4.0 协议
+      enabled: true
     toc: true
+    math: true
+
+  Footer:
+    Since: 2022
+    customText: 
+
+  Widgets:
+    page:
+      - type: toc
