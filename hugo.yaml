@@ -1,6 +1,5 @@
 baseURL: https://blog.dlysy.top/ #网页链接
-languageCode: en #语言
-# DefaultContentLanguage: zh_cn
+languageCode: zh_cn #语言
 title: DLYSY Blog #标题
 theme: hugo-theme-stack #主题
 time_Zone: Asia/Shanghai #时间戳
@@ -24,12 +23,12 @@ permalinks: #浏览器链接显示方式
 
 menu:
   social:
-    - name: github
+    - name: GitHub
       url: "https://github.com/DLYSY"
       params:
         icon: brand-github
 
-    - name: mail
+    - name: Mail
       url: "mailto:dly20011214@outlook.com"
       params:
         icon: mail
@@ -39,18 +38,24 @@ menu:
       params:
         icon: bilibili
 
-    - name: misskey
+    - name: Misskey
       url: https://nya.one/@DLYSY
       params:
-        icon: mastodon
+        icon: "misskey"
 
-    - name: rss
+    - name: RSS
       url: "/index.xml"
       params:
         icon: rss
 
 
   main:
+    - name: 主页
+      url: /
+      weight: -1
+      params:
+        icon: home
+
     - name: 搜索
       url: /search
       weight: 1
@@ -88,12 +93,19 @@ menu:
         icon: bulb
 
 Params:
+  colorScheme:
+    toggle: true # 允许深浅切换
+    default: dark # Available values: auto, light, dark
+
   mainSections:
     - post
+
   DateFormat:
     published: "2006-01-02"
 
   Sidebar:
+    emoji: 💤
+    subtitle: 只想摆烂
     compact: true
     avatar:
       enabled: true
@@ -114,3 +126,16 @@ Params:
   Widgets:
     page:
       - type: toc
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+    
+  highlight: #语法高亮
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true #显示行号
+    noClasses: false
+    style: darcula

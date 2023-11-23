@@ -23,7 +23,7 @@ categories:
 [该存储库](https://github.com/keys961/keys961.github.io)
 已在 GitHub上采用 MIT 协议开源。
 
-由于该博客文章对于我学习 ZooKeeper 带来了很大帮助和启发，故在此基础上加以补充部分内容。
+由于该博客文章对于我学习 ZooKeeper 带来了很大帮助和启发，故在此基础上加以完善和补充部分内容。
 
 # 简介
 
@@ -160,18 +160,18 @@ ZooKeeper用于可实现分布式锁服务。
 
 - 上锁：
 
-  ```pseudocode
-  n = create(path + “/lock-”, EPHEMERAL|SEQUENTIAL); //创建临时的顺序的znode
-  2: C = getChildren(path, false); //获取path下所有节点，可看成一个锁队列
-  if(n.seq == min_seq(C)) {
-  	return; // n.seq是所有子节点最小的，则获取锁
-  }
-  p = znode in C ordered just before n; //获取C中小于n序列号的最大的节点，监听它
-  if (exists(p, true)) {
-     wait(event); //监听p节点移除，以再次获取锁
-  }
-  goto 2;
-  ```
+```
+n = create(path + “/lock-”, EPHEMERAL|SEQUENTIAL); //创建临时的顺序的znode
+2: C = getChildren(path, false); //获取path下所有节点，可看成一个锁队列
+if(n.seq == min_seq(C)) {
+  return; // n.seq是所有子节点最小的，则获取锁
+}
+p = znode in C ordered just before n; //获取C中小于n序列号的最大的节点，监听它
+if (exists(p, true)) {
+    wait(event); //监听p节点移除，以再次获取锁
+}
+goto 2;
+```
 
   上述监听，一个`znode`上监听的客户端数量大大减少，通知时造成的峰值可以避免。
 
@@ -179,45 +179,45 @@ ZooKeeper用于可实现分布式锁服务。
 
   只需删除创建的节点即可。
 
-  ```pseudocode
-  delete(node);
-  ```
+```
+delete(node);
+```
 
 #### 读写锁
 
 - 写锁
 
-  ```pseudocode
-  n = create(path + “/write-”, EPHEMERAL|SEQUENTIAL);
-  2: C = getChildren(path, false);
-  if(n.seq == min_seq(C)) {
-  	return; //获得锁
-  }
-  p = znode in C ordered just before n;
-  if(exists(p, true)) {
-  	wait for event;
-  }
-  goto 2;
-  ```
+```
+n = create(path + “/write-”, EPHEMERAL|SEQUENTIAL);
+2: C = getChildren(path, false);
+if(n.seq == min_seq(C)) {
+  return; //获得锁
+}
+p = znode in C ordered just before n;
+if(exists(p, true)) {
+  wait for event;
+}
+goto 2;
+```
 
-  和之前的互斥锁一样。
+和之前的互斥锁一样。
 
 - 读锁
 
-  ```pseudocode
-  n = create(path + “/read-”, EPHEMERAL|SEQUENTIAL)
-  C = getChildren(path, false)
-  3: if (no write znodes lower than n in C) { 
-  	//若C没有小于n的写锁write znode, 则能获取读锁
-  	return;
-  }
-  p = write znode in C ordered just before n //小于n的最大写锁write znode
-  if (exists(p, true)){ 
-  	// 这部分可能出现羊群效应
-      wait for event;
-  }
-  goto 3;
-  ```
+```
+n = create(path + “/read-”, EPHEMERAL|SEQUENTIAL)
+C = getChildren(path, false)
+3: if (no write znodes lower than n in C) { 
+  //若C没有小于n的写锁write znode, 则能获取读锁
+  return;
+}
+p = write znode in C ordered just before n //小于n的最大写锁write znode
+if (exists(p, true)){ 
+  // 这部分可能出现羊群效应
+    wait for event;
+}
+goto 3;
+```
 
 ### 双屏障
 

@@ -3,7 +3,7 @@ title: "💡 关于"
 layout: about
 hidemeta: true
 draft: false # 是否为草稿
-showToc: false # 显示目录
+toc: false # 显示目录
 showbreadcrumbs: false
 ---
 
