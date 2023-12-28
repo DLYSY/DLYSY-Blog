@@ -41,7 +41,7 @@ menu:
     - name: Misskey
       url: https://nya.one/@DLYSY
       params:
-        icon: "misskeygreen"
+        icon: "mastodon"
 
     - name: RSS
       url: "/index.xml"

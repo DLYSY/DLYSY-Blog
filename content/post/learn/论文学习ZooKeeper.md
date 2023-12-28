@@ -252,7 +252,7 @@ goto 3;
 
 ZooKeeper的组件图如下：
 
-![ZooKeeper服务的组件](https://dlysy.github.io/PictureBads/DLYSYBlog/learn/论文学习ZooKeeper/ZooKeeper服务的组件.png)
+![ZooKeeper服务的组件](https://dlysy.github.io/PictureBeds/DLYSYBlog/learn/论文学习ZooKeeper/ZooKeeper服务的组件.png)
 
 副本数据库是包含整颗树的内存数据库，最大为 1MB（可以通过配置文件修改），为了恢复，会使用 WAL，保留一个已提交操作的 replay log（在 ZooKeeper 中是一个写前日志），并周期性生成快照。
 
@@ -264,7 +264,7 @@ ZooKeeper的组件图如下：
 
 >replay log：参考下图（MySQL 的 replay log 结构），它是一个中介临时的日志文件，用于存储从 Leader 节点同步过来的日志内容，它里面的内容和 Leader 节点的日志里面的内容是一致的。然后 Followers 从节点从这个 relay log 日志文件中读取数据应用到数据库中，来实现数据的主从复制。
 >
->![MySQL replay log](https://dlysy.github.io/PictureBads/DLYSYBlog/learn/论文学习ZooKeeper/MySQL-replay-log.png)
+>![MySQL replay log](https://dlysy.github.io/PictureBeds/DLYSYBlog/learn/论文学习ZooKeeper/MySQL-replay-log.png)
 
 读取请求可落到所有的副本上，写入请求被路由（转发）到 Leader 上（然后通过Zab广播同步）。
 
