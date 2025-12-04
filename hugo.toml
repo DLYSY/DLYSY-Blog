@@ -1,0 +1,156 @@
+baseURL = "https://blog.dlysy.top/"
+languageCode = "zh_cn"
+title = "DLYSY Blog"
+theme = "hugo-theme-stack"
+time_Zone = "Asia/Shanghai"
+copyright = "DLYSY"
+enableInlineShortcodes = true
+enableEmoji = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+env = "production"
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+# paginate = 15
+
+[minify]
+disableXML = true
+
+[permalinks]
+post = "/:title/"
+
+[[menu.social]]
+name = "GitHub"
+url = "https://github.com/DLYSY"
+
+  [menu.social.params]
+  icon = "brand-github"
+
+[[menu.social]]
+name = "Mail"
+url = "mailto:dly20011214@outlook.com"
+
+  [menu.social.params]
+  icon = "mail"
+
+[[menu.social]]
+name = "bilibili"
+url = "https://space.bilibili.com/85348442"
+
+  [menu.social.params]
+  icon = "bilibili"
+
+[[menu.social]]
+name = "Misskey"
+url = "https://nya.one/@DLYSY"
+
+  [menu.social.params]
+  icon = "mastodon"
+
+[[menu.social]]
+name = "RSS"
+url = "/index.xml"
+
+  [menu.social.params]
+  icon = "rss"
+
+[[menu.main]]
+name = "主页"
+url = "/"
+weight = -1
+
+  [menu.main.params]
+  icon = "home"
+
+[[menu.main]]
+name = "搜索"
+url = "/search"
+weight = 1
+
+  [menu.main.params]
+  icon = "search"
+
+[[menu.main]]
+name = "文章列表"
+url = "/archives"
+weight = 2
+
+  [menu.main.params]
+  icon = "archives"
+
+[[menu.main]]
+name = "文章分区"
+url = "/post"
+weight = 3
+
+  [menu.main.params]
+  icon = "windmill"
+
+[[menu.main]]
+name = "文章分类"
+url = "/categories"
+weight = 4
+
+  [menu.main.params]
+  icon = "categories"
+
+[[menu.main]]
+name = "标签"
+url = "/tags"
+weight = 5
+
+  [menu.main.params]
+  icon = "tag"
+
+[[menu.main]]
+name = "关于"
+url = "/about"
+weight = 6
+
+  [menu.main.params]
+  icon = "bulb"
+
+[Params]
+mainSections = [ "post" ]
+
+  [Params.colorScheme]
+  toggle = true
+  default = "dark"
+
+  [Params.DateFormat]
+  published = "2006-01-02"
+
+  [Params.Sidebar]
+  emoji = "💤"
+  subtitle = "只想摆烂"
+  compact = true
+
+    [Params.Sidebar.avatar]
+    enabled = true
+    src = "avatar.jpg"
+    locale = true
+
+  [Params.Article]
+  toc = true
+  math = true
+
+    [Params.Article.License]
+    Default = "本文采用 CC-BY-ND 4.0 协议"
+    enabled = true
+
+  [Params.Footer]
+  Since = 2_022
+
+[[Params.Widgets.page]]
+type = "toc"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNos = true
+noClasses = false
+# style = "darcula"

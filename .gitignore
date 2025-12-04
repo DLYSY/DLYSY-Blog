@@ -1,6 +1,7 @@
 themes/
 .hugo_build.lock
 resources/
-i18n\
-data\
-.vscode\
+i18n/
+data/
+.vscode/
+public/
