@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: CaiJimmy/hugo-theme-stack
-          path: ./themes
+          path: ./themes/hugo-theme-stack
         
       - name: Setup Pages
         uses: actions/configure-pages@v5
