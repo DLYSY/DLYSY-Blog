@@ -35,7 +35,9 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build with Hugo
-        run: hugo build
+        run: |
+          sudo snap install hugo
+          hugo build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
