@@ -60,15 +60,15 @@ categories:
 
 在服务器管理器的右上角选择“管理” $\to$ “添加角色和功能”
 
-![3.1-1](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/3.1-1.PNG)
+![3.1-1](3.1-1.PNG)
 
 然后一直选择下一步，直到“选择服务器角色”；如图选择“web服务器(IIS)”
 
-![3.1-2](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/3.1-2.PNG)
+![3.1-2](3.1-2.PNG)
 
 在“角色服务”中选择“WebSocket协议”**（这一步很重要，选漏了 IIS 将无法代理 WebSocket ，无法正常使用）**，其他功能不是必须，可以按需选择。
 
-![3.1-3](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/3.1-3.PNG)
+![3.1-3](3.1-3.PNG)
 
 ## 安装[ARR](https://www.iis.net/downloads/microsoft/application-request-routing)和[URL重写模块](https://www.iis.net/downloads/microsoft/url-rewrite)
 
@@ -80,23 +80,23 @@ categories:
 
 打开 IIS 管理器，在左侧导航栏选择你的服务器$\to $在右侧双击“Application Request Routing Cache”打开
 
-![4-1](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-1.PNG)
+![4-1](4-1.PNG)
 
 然后在右边选择“Server Proxy Settings...”
 
-![4-2](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-2.PNG)
+![4-2](4-2.PNG)
 
 接下来把“Enable Proxy”打上勾，然后在右边选择应用
 
-![4-3](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-3.PNG)
+![4-3](4-3.PNG)
 
 在右侧导航栏选择你的站点，然后双击进入“URL重写”（我这里用 IIS 默认创建的站点做演示）
 
-![4-4](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-4.PNG)
+![4-4](4-4.PNG)
 
 点击“添加规则”$\to$选择“反向代理”$\to$“确定”
 
-![4-5](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-5.PNG)
+![4-5](4-5.PNG)
 
 接下来配置反向代理，在顶上的文本框输入你 Jupyter 服务器的地址或域名或主机名+端口。**然后请务必打勾“启用SSL卸载”！无论你的反向代理目标是否使用 SSL！**
 
@@ -104,23 +104,23 @@ categories:
 
 然后点击“确定”。
 
-![4-6](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-6.PNG)
+![4-6](4-6.PNG)
 
 如果你在 Jupyter 上配置了 SSL 则还有下面两步：
 
 1. 双击打开你刚刚创建的规则
 
-![4-7](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-7.PNG)
+![4-7](4-7.PNG)
 
 2. 将下面的 http 改成 https，最后在右边点击“应用”
 
 *注：如果在 Jupyter 上配置了 SSL，必须确保 IIS 主机信任 Jupyter 上 SSL 的 CA（SSL 主机名不对没关系，关键是 CA 要信任），否则将会发生502（好像是502.3）的服务器错误。*
 
-![4-8](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-8.PNG)
+![4-8](4-8.PNG)
 
 配置完成之后访问反向代理的地址就可以看到界面了
 
-![4-9](https://dlysy.github.io/PictureBeds/DLYSYBlog/tech/IIS反向代理JupyterLab/4-9.PNG)
+![4-9](4-9.PNG)
 
 至此反向代理配置完成
 
